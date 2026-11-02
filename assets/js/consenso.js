@@ -33,6 +33,7 @@ function carica(el){
 }
 function applica(c){
   if(c && c.esterni) document.querySelectorAll('[data-consent="esterni"]').forEach(carica);
+  try{ document.dispatchEvent(new CustomEvent('lello:consenso',{detail:c||{}})); }catch(_){}
 }
 
 /* ---------- Banner ---------- */

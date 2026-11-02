@@ -76,8 +76,55 @@ function footer(){
   '</nav>';
 }
 
-/* prezzi del menu: 7 -> "7,00" */
+/* ---------- Menu completo (menu.html), stile del menu ufficiale ---------- */
 function prezzo(v){ return typeof v==='number' ? v.toFixed(2).replace('.',',') : (v||''); }
+function renderMenuUfficiale(host){
+  var M=window.LELLO_MENU, P={};
+  (window.LELLO_PIZZE||[]).forEach(function(p){ P[p.id]=p; });
+  var nav='<nav class="mu-nav" aria-label="Sezioni del menu"><div class="mu-nav-in">'+M.map(function(g,i){
+    return '<a href="#'+g.id+'" style="--c:'+g.col+'"'+(i===0?' aria-current="true"':'')+'>'+g.titolo+'</a>'; }).join('')+'</div></nav>';
+  var top='<div class="mu-top"><img class="mu-firma" src="../assets/img/dalello-firma.png" alt="da Lello" width="250" height="93">'+
+    '<p class="mu-sub">Il menu <b>Le Fornaci</b></p>'+
+    '<div class="mu-act"><a class="mu-pdf" href="../assets/menu-pizzeria-da-lello.pdf" download>Scarica il menu in PDF</a></div>'+
+    '<label class="mu-search"><span class="sr">Cerca nel menu</span><input type="search" placeholder="Cerca: burrata, friarielli, pistacchio..." autocomplete="off"></label></div>';
+  var secs=M.map(function(g){
+    var rows=g.voci.map(function(v){
+      if(v[0]==='§') return '<h3 class="mu-sh">'+v[1]+'</h3>';
+      var p=v[3]&&P[v[3]], key=(v[0]+' '+(v[2]||'')).toLowerCase().replace(/"/g,'');
+      return '<div class="mu-it'+(p?' has-ph':'')+'" data-s="'+key+'">'+
+        (p?'<button class="mu-ph" data-see="'+p.id+'" aria-label="Guarda '+v[0].replace(/"/g,'')+' nella ruota"><img src="'+(p.thumb||p.img)+'" alt="" loading="lazy" width="64" height="64"></button>':'')+
+        '<div class="mu-tx"><b class="mu-n">'+v[0]+'</b>'+(v[2]?'<span class="mu-d">'+v[2]+'</span>':'')+'</div>'+
+        '<span class="mu-p">'+prezzo(v[1])+'</span></div>';
+    }).join('');
+    return '<section class="mu-sec" id="'+g.id+'" style="--c:'+g.col+';--ink:'+g.ink+'">'+
+      '<h2 class="mu-band"'+(g.fg?' style="color:'+g.fg+'"':'')+'><span>'+g.t1+'</span> <b>'+g.t2+'</b></h2>'+
+      (g.pill?'<p class="mu-pill">'+g.pill+'</p>':'')+(g.nota?'<p class="mu-note">'+g.nota+'</p>':'')+
+      '<div class="mu-list">'+rows+'</div></section>';
+  }).join('');
+  var extra=(window.LELLO_EXTRA||[]).map(function(x){ return '<span>'+x+'</span>'; }).join('');
+  host.innerHTML='<div class="mu">'+top+nav+secs+'<p class="mu-empty">Nessun piatto trovato. Prova con un altro ingrediente.</p>'+
+    '<div class="mu-extra">'+extra+'</div><p class="mu-foot">Prezzi in euro, coperto escluso. Allergeni: chiedi al personale la tabella dei 14 allergeni.</p>'+
+    '<img class="mu-logo" src="../assets/img/lello-logo-scuro.png" alt="da Lello Le Fornaci" width="194" height="50"></div>';
+
+  var links=host.querySelectorAll('.mu-nav a'), navIn=host.querySelector('.mu-nav-in');
+  function setCur(id){ links.forEach(function(a){ var on=a.getAttribute('href')==='#'+id; if(on){ a.setAttribute('aria-current','true'); navIn.scrollTo({left:a.offsetLeft-16,behavior:'smooth'}); } else a.removeAttribute('aria-current'); }); }
+  links.forEach(function(a){ a.addEventListener('click',function(e){ e.preventDefault(); var t=document.querySelector(a.getAttribute('href')); if(t){ t.scrollIntoView({behavior:'smooth'}); history.replaceState(null,'',a.getAttribute('href')); } }); });
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(en){ en.forEach(function(x){ if(x.isIntersecting) setCur(x.target.id); }); },{rootMargin:'-35% 0px -60% 0px'});
+    host.querySelectorAll('.mu-sec').forEach(function(s){ io.observe(s); });
+  }
+  if(location.hash){ var t0=document.getElementById(location.hash.slice(1)); if(t0){ var go=function(){ t0.scrollIntoView({behavior:'instant'}); }; setTimeout(go,120); window.addEventListener('load',function(){ setTimeout(go,60); }); } }
+  var inp=host.querySelector('.mu-search input'), empty=host.querySelector('.mu-empty');
+  inp.addEventListener('input',function(){
+    var q=inp.value.trim().toLowerCase(), any=false;
+    host.querySelectorAll('.mu-sec').forEach(function(s){
+      var vis=0; s.querySelectorAll('.mu-it').forEach(function(it){ var ok=!q||it.getAttribute('data-s').indexOf(q)>-1; it.classList.toggle('hide',!ok); if(ok) vis++; });
+      s.querySelectorAll('.mu-sh,.mu-pill,.mu-note').forEach(function(h){ h.style.display=q?'none':''; });
+      s.style.display=vis?'':'none'; if(vis) any=true;
+    });
+    empty.style.display=any?'none':'block';
+  });
+}
 
 /* ---------- Menu "del sito": integrato nella pagina, come la prima versione della demo ---------- */
 function renderMenuSito(host){
@@ -121,20 +168,39 @@ function renderMenuSito(host){
   });
 }
 
-/* ---------- Pagina menu (02/11/2026): solo il menu integrato nel sito ----------
-   La versione "menu stampato" e' stata tolta su richiesta del cliente: resta il PDF scaricabile. */
+/* ---------- Pagina menu: due versioni (aggiornato 02/11/2026) ----------
+   "sito" = menu integrato nella pagina, "ufficiale" = menu in stile cartaceo.
+   Predefinito: integrato su computer, stile cartaceo su telefono (schermo fino a 980 px).
+   Il selettore sopra il menu permette sempre di passare all'altra versione; si puo' forzare con menu.html?menu=sito o ?menu=ufficiale */
 function renderMenu(){
   var host=document.getElementById('menu-app'); if(!host || !window.LELLO_MENU) return;
-  host.parentNode.classList.add('is-sito');
-  renderMenuSito(host);
+  var q=(location.search.match(/[?&]menu=(ufficiale|sito)/)||[])[1];
+  var mobile=window.matchMedia('(max-width:980px)').matches;
+  var stile=q||(mobile?'ufficiale':'sito');
+  var sw=document.createElement('div');
+  sw.className='mswitch'; sw.setAttribute('role','tablist'); sw.setAttribute('aria-label','Scegli come vedere il menu');
+  sw.innerHTML='<button role="tab" data-st="sito">Menu del sito</button><button role="tab" data-st="ufficiale">Menu stampato</button>';
+  host.parentNode.insertBefore(sw,host);
+  function show(st){
+    stile=st;
+    sw.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-selected',b.getAttribute('data-st')===st); });
+    host.parentNode.classList.toggle('is-sito',st==='sito');
+    if(st==='sito') renderMenuSito(host); else renderMenuUfficiale(host);
+  }
+  sw.addEventListener('click',function(e){
+    var b=e.target.closest('[data-st]'); if(!b || b.getAttribute('data-st')===stile) return;
+    show(b.getAttribute('data-st'));
+    sw.scrollIntoView({behavior:'smooth',block:'start'});
+  });
   host.addEventListener('click',function(e){
     var b=e.target.closest('[data-see]'); if(!b) return;
     var w=document.querySelector('[data-wheel]'); if(!w||!w.wheel) return;
     /* ricorda il punto del menu per il pulsante "Torna al menu" */
-    w.wheel.setReturn({el:b,row:b.closest('.mitem')||b,off:b.getBoundingClientRect().top});
+    w.wheel.setReturn({el:b,row:b.closest('.mu-it,.mitem')||b,off:b.getBoundingClientRect().top});
     window.scrollTo({top:0,behavior:'smooth'});
     setTimeout(function(){ w.wheel.openId(b.getAttribute('data-see')); },450);
   });
+  show(stile);
 }
 
 /* ---------- Reveal on scroll ---------- */

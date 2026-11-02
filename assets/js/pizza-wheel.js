@@ -106,7 +106,7 @@ Wheel.prototype.render=function(){
   }
   this.track.innerHTML=this.items.map(function(p,i){
     return '<button class="pz'+(p.forma==='calzone'?' is-calzone':'')+'" role="listitem" data-i="'+i+'" aria-label="'+p.nome+', '+euro(p.prezzo)+'. Scopri gli ingredienti">'+
-      '<span class="pz-disc"><span class="pz-spin" style="animation-delay:-'+(i*3.7).toFixed(1)+'s"><img src="'+p.img+'" alt="'+p.nome+'" loading="'+(i<5?'eager':'lazy')+'" draggable="false"></span></span>'+
+      '<span class="pz-disc"><span class="pz-spin" style="animation-delay:-'+(i*3.7).toFixed(1)+'s"><img src="'+(p.sm||p.img)+'" alt="'+p.nome+'" width="420" height="420" loading="'+(i<5?'eager':'lazy')+'" decoding="async" draggable="false"></span></span>'+
       '<b>'+p.nome+'</b>'+tbc(p)+'<small>'+euro(p.prezzo)+'</small></button>';
   }).join('');
   this.btns=[].slice.call(this.track.querySelectorAll('.pz'));

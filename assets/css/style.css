@@ -734,3 +734,23 @@ h1 em{font:400 1.18em/1 'Yellowtail',cursive;letter-spacing:0;padding-right:.08e
   .lt-head{display:none}
   .lt-row span:first-child{font-weight:700}
 }
+
+/* ===== 02/11/2026: SEZIONE INSTAGRAM (sostituisce "Cosa mangiare" e "Il locale") ===== */
+.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:36px auto 0;max-width:1000px}
+.ig-it{position:relative;display:block;aspect-ratio:1/1;overflow:hidden;background:#e9e2d6}
+.ig-it img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.ig-it:hover img{transform:scale(1.05)}
+.ig-it::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.55));opacity:0;transition:opacity .3s}
+.ig-it:hover::after{opacity:1}
+.ig-cap{position:absolute;left:12px;right:12px;bottom:10px;z-index:1;color:#fff;font-size:13px;line-height:1.35;text-align:left;opacity:0;transition:opacity .3s}
+.ig-it:hover .ig-cap{opacity:1}
+.ig-play{position:absolute;top:10px;right:10px;z-index:1;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.55)}
+.ig-play::before{content:"";position:absolute;left:11px;top:8px;border-left:9px solid #fff;border-top:6px solid transparent;border-bottom:6px solid transparent}
+.ig-consent{margin:18px auto 0;font-size:13px;color:#5b5556}
+.ig-load{background:none;border:0;padding:0;font:inherit;color:#BF1E2E;text-decoration:underline;cursor:pointer}
+.ig-btn{margin-top:28px;gap:10px}
+.ig-btn svg{width:20px;height:20px}
+@media (max-width:640px){
+  .ig-grid{grid-template-columns:repeat(2,1fr);gap:6px;margin-top:26px}
+  .ig-cap{display:none}
+}

@@ -37,7 +37,7 @@ window.LELLO_PIZZE = [
   { id:'pulcinella', nome:'La Pulcinella', cat:'Eccellenze napoletane', prezzo:12, img:'assets/img/pizze/pulcinella.webp',
     frase:'Bianca, con cicoli napoletani e ricotta di bufala. Napoli in purezza.',
     ing:[['Fior di latte','100% latte italiano'],['Cicoli napoletani','Salumificio Barbato'],['Provola fresca','di Agerola'],['Ricotta di bufala',''],['Basilico',''],['Pepe',''],['Olio EVO','"Nino Centonze"']] },
-  { id:'crocche', nome:'Crocchè', cat:'Novità', prezzo:null, img:'assets/img/pizze/crocche.webp',
+  { id:'crocche', nome:'Crocchè', cat:'Eccellenze napoletane', prezzo:14, img:'assets/img/pizze/crocche.webp',
     frase:'Cremosa, filante e super golosa, con le crocchette di patate sopra.',
     ing:[['Panna',''],['Fiordilatte',''],['Prosciutto cotto',''],['Crocchette di patate',''],['Basilico fresco','']] },
   { id:'nuovagialla', nome:'Zuccosa', cat:'Eccellenze napoletane', prezzo:12, img:'assets/img/pizze/nuovagialla.webp',
@@ -202,6 +202,7 @@ window.LELLO_MENU = [
     ['Margherita Gold',8,'Passata di pomodoro giallo del Monte Somma, fior di latte, basilico, olio EVO'],
     ['Super Gold',11,'Cornicione ripieno di ricotta, pomodoro giallo del Monte Somma, bufala campana D.O.P., basilico','supergold'],
     ['Zuccosa',12,'Base di zucca, gorgonzola, salame dolce napoletano, taralli sbriciolati','nuovagialla'],
+    ['Crocchè',14,'Panna, fior di latte, prosciutto cotto, crocchette di patate, basilico fresco','crocche'],
     ['Tarantella',8,'Metà pomodoro "Oro del Vesuvio", metà pomodoro giallo del Monte Somma, fior di latte, basilico']
   ]},
   { id:'calzoni', titolo:'Calzoni', t1:'I nostri', t2:'Calzoni', col:'#8C2B2B', ink:'#8C2B2B', nota:'Al forno oppure fritti.', voci:[
@@ -292,4 +293,8 @@ window.LELLO_EXTRA = ['Aggiunte da 1 a 3 €','Impasto Napoli +1 €','Cornicion
 })();
 
 /* miniature locali per il menu e il PDF (assets/img/menu/<id>.webp) */
-window.LELLO_PIZZE.forEach(function(p){ p.thumb='assets/img/menu/'+p.id+'.webp'; });
+window.LELLO_PIZZE.forEach(function(p){
+  p.thumb='assets/img/menu/'+p.id+'.webp';
+  /* versione leggera (420 px) per le pizze piccole della ruota; la grande (800 px) si carica solo quando apri la pizza */
+  if(/^assets\/img\/pizze\/[^/]+\.webp$/.test(p.img)) p.sm=p.img.replace('assets/img/pizze/','assets/img/pizze/s/');
+});
