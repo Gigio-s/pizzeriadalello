@@ -746,6 +746,10 @@ h1 em{font:400 1.18em/1 'Yellowtail',cursive;letter-spacing:0;padding-right:.08e
 .ig-it:hover .ig-cap{opacity:1}
 .ig-play{position:absolute;top:10px;right:10px;z-index:1;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.55)}
 .ig-play::before{content:"";position:absolute;left:11px;top:8px;border-left:9px solid #fff;border-top:6px solid transparent;border-bottom:6px solid transparent}
+/* post Instagram incorporati (dopo il consenso): fila scorrevole */
+.ig-grid.is-embed{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;align-items:flex-start;max-width:1100px;padding:4px 4px 14px;-webkit-overflow-scrolling:touch}
+.ig-emb{flex:0 0 340px;max-width:86vw;max-height:660px;overflow:hidden;border-radius:4px;scroll-snap-align:start;text-align:left}
+.ig-emb .instagram-media,.ig-emb iframe{min-width:0!important;width:100%!important;max-width:100%!important;margin:0!important}
 .ig-consent{margin:18px auto 0;font-size:13px;color:#5b5556}
 .ig-load{background:none;border:0;padding:0;font:inherit;color:#BF1E2E;text-decoration:underline;cursor:pointer}
 .ig-btn{margin-top:28px;gap:10px}

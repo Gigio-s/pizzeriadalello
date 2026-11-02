@@ -1,7 +1,7 @@
 /* Pizzeria da Lello Le Fornaci - gestione consenso cookie (02/11/2026)
    Conforme alle Linee guida cookie del Garante privacy (10/06/2021) e al GDPR:
    - di base il sito usa solo strumenti tecnici (questo file salva la scelta nel browser)
-   - i contenuti esterni (Google Maps, in futuro video/post Instagram) si caricano SOLO dopo il consenso
+   - i contenuti esterni (Google Maps, post Instagram) si caricano SOLO dopo il consenso
    - "Rifiuta" e "Accetta" hanno lo stesso peso; la X chiude il banner e vale come rifiuto
    - la scelta dura 6 mesi, poi il banner viene riproposto
    - "Preferenze cookie" nel footer riapre il pannello in qualsiasi momento
@@ -45,10 +45,10 @@ function costruisci(){
   box.innerHTML=
     '<button class="ck-x" type="button" aria-label="Chiudi e rifiuta i cookie non necessari" data-ck="no">&times;</button>'+
     '<p class="ck-t" id="ck-t">Cookie e contenuti esterni</p>'+
-    '<p class="ck-d">Questo sito usa solo cookie tecnici necessari al funzionamento. Con il tuo consenso carichiamo anche contenuti esterni, come la mappa di Google Maps, che possono installare cookie di terze parti. Puoi cambiare idea quando vuoi da <b>Preferenze cookie</b> in fondo alla pagina. <a href="privacy.html#cookie">Leggi l\'informativa</a>.</p>'+
+    '<p class="ck-d">Questo sito usa solo cookie tecnici necessari al funzionamento. Con il tuo consenso carichiamo anche contenuti esterni, come la mappa di Google Maps e i post di Instagram, che possono installare cookie di terze parti. Puoi cambiare idea quando vuoi da <b>Preferenze cookie</b> in fondo alla pagina. <a href="privacy.html#cookie">Leggi l\'informativa</a>.</p>'+
     '<div class="ck-opt" hidden>'+
       '<label class="ck-row"><input type="checkbox" checked disabled><span><b>Necessari</b><small>Servono al funzionamento del sito e a ricordare questa scelta. Sempre attivi.</small></span></label>'+
-      '<label class="ck-row"><input type="checkbox" data-ck-est><span><b>Contenuti esterni</b><small>Google Maps (mappa del locale). Google riceve il tuo indirizzo IP e puo\' usare cookie propri.</small></span></label>'+
+      '<label class="ck-row"><input type="checkbox" data-ck-est><span><b>Contenuti esterni</b><small>Google Maps (mappa del locale) e Instagram (post del nostro profilo). Google e Meta ricevono il tuo indirizzo IP e possono usare cookie propri.</small></span></label>'+
     '</div>'+
     '<div class="ck-btns">'+
       '<button class="ck-b" type="button" data-ck="no">Rifiuta</button>'+
