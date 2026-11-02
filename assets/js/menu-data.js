@@ -40,9 +40,9 @@ window.LELLO_PIZZE = [
   { id:'crocche', nome:'Crocchè', cat:'Novità', prezzo:null, img:'assets/img/pizze/crocche.webp',
     frase:'Cremosa, filante e super golosa, con le crocchette di patate sopra.',
     ing:[['Panna',''],['Fiordilatte',''],['Prosciutto cotto',''],['Crocchette di patate',''],['Basilico fresco','']] },
-  { id:'nuovagialla', nome:'Zuccosa', cat:'Novità', prezzo:null, img:'assets/img/pizze/nuovagialla.webp',
-    frase:'Crema di zucca, fior di latte e salumi croccanti. (PROMEMORIA: ingredienti e prezzo da confermare con Lello)',
-    ing:[['Crema di zucca','da confermare'],['Fior di latte','da confermare'],['Speck o pancetta','da confermare'],['Granella','da confermare']] },
+  { id:'nuovagialla', nome:'Zuccosa', cat:'Eccellenze napoletane', prezzo:12, img:'assets/img/pizze/nuovagialla.webp',
+    frase:'Base di zucca, gorgonzola, salame dolce napoletano e taralli sbriciolati.',
+    ing:[['Base di zucca',''],['Gorgonzola',''],['Salame napoletano','dolce'],['Taralli napoletani','sbriciolati']] },
   { id:'margherita', nome:'Margherita', cat:'Classiche napoletane', prezzo:7, img:'assets/img/pizze/margherita.webp',
     frase:'La regina: pomodoro, fior di latte e basilico.',
     ing:[['Pomodoro pelato','"Oro del Vesuvio"'],['Fior di latte','100% latte italiano'],['Basilico fresco',''],['Olio EVO','"Nino Centonze"']] },
@@ -201,6 +201,7 @@ window.LELLO_MENU = [
     ['La Scugnizzo',13,'Cornicione ripieno di salsiccia, metà pomodoro "Oro del Vesuvio" e metà pomodoro giallo del Monte Somma. Dopo cottura: pesto di basilico, tarallo sbriciolato, pepe','scugnizzo'],
     ['Margherita Gold',8,'Passata di pomodoro giallo del Monte Somma, fior di latte, basilico, olio EVO'],
     ['Super Gold',11,'Cornicione ripieno di ricotta, pomodoro giallo del Monte Somma, bufala campana D.O.P., basilico','supergold'],
+    ['Zuccosa',12,'Base di zucca, gorgonzola, salame dolce napoletano, taralli sbriciolati','nuovagialla'],
     ['Tarantella',8,'Metà pomodoro "Oro del Vesuvio", metà pomodoro giallo del Monte Somma, fior di latte, basilico']
   ]},
   { id:'calzoni', titolo:'Calzoni', t1:'I nostri', t2:'Calzoni', col:'#8C2B2B', ink:'#8C2B2B', nota:'Al forno oppure fritti.', voci:[
