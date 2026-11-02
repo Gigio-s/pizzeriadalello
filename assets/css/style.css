@@ -750,6 +750,9 @@ h1 em{font:400 1.18em/1 'Yellowtail',cursive;letter-spacing:0;padding-right:.08e
 .ig-grid.is-embed{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;align-items:flex-start;max-width:1100px;padding:4px 4px 14px;-webkit-overflow-scrolling:touch}
 .ig-emb{flex:0 0 340px;max-width:86vw;max-height:660px;overflow:hidden;border-radius:4px;scroll-snap-align:start;text-align:left}
 .ig-emb .instagram-media,.ig-emb iframe{min-width:0!important;width:100%!important;max-width:100%!important;margin:0!important}
+/* meno spazio tra Storia e Instagram (stesso sfondo) */
+#storia{padding-bottom:clamp(36px,5vw,64px)}
+#instagram{padding-top:clamp(32px,4vw,56px)}
 .ig-consent{margin:18px auto 0;font-size:13px;color:#5b5556}
 .ig-load{background:none;border:0;padding:0;font:inherit;color:#BF1E2E;text-decoration:underline;cursor:pointer}
 .ig-btn{margin-top:28px;gap:10px}
