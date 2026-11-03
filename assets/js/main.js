@@ -93,7 +93,7 @@ function renderMenuUfficiale(host){
       var p=v[3]&&P[v[3]], key=(v[0]+' '+(v[2]||'')).toLowerCase().replace(/"/g,'');
       return '<div class="mu-it'+(p?' has-ph':'')+'" data-s="'+key+'">'+
         (p?'<button class="mu-ph" data-see="'+p.id+'" aria-label="Guarda '+v[0].replace(/"/g,'')+' nella ruota"><img src="'+(p.thumb||p.img)+'" alt="" loading="lazy" width="64" height="64"></button>':'')+
-        '<div class="mu-tx"><b class="mu-n">'+v[0]+'</b>'+(v[2]?'<span class="mu-d">'+v[2]+'</span>':'')+'</div>'+
+        '<div class="mu-tx"><b class="mu-n">'+v[0]+(window.lelloSurg?lelloSurg(v[0]):'')+'</b>'+(v[2]?'<span class="mu-d">'+v[2]+'</span>':'')+'</div>'+
         '<span class="mu-p">'+prezzo(v[1])+'</span></div>';
     }).join('');
     return '<section class="mu-sec" id="'+g.id+'" style="--c:'+g.col+';--ink:'+g.ink+'">'+
@@ -140,7 +140,7 @@ function renderMenuSito(host){
       '<div class="mlist">'+g.voci.map(function(v){
         if(v[0]==='§') return '<h3 class="msub">'+v[1]+'</h3>';
         var p=v[3]&&P[v[3]];
-        return '<div class="mitem" data-s="'+(v[0]+' '+(v[2]||'')).toLowerCase().replace(/"/g,'')+'"><b>'+v[0]+'</b><span class="pr">'+euro(v[1])+'</span>'+(v[2]?'<p>'+v[2]+'</p>':'')+
+        return '<div class="mitem" data-s="'+(v[0]+' '+(v[2]||'')).toLowerCase().replace(/"/g,'')+'"><b>'+v[0]+(window.lelloSurg?lelloSurg(v[0]):'')+'</b><span class="pr">'+euro(v[1])+'</span>'+(v[2]?'<p>'+v[2]+'</p>':'')+
           (p?'<button class="see" data-see="'+p.id+'"><img src="'+(p.thumb||p.img)+'" alt="" loading="lazy">Guardala</button>':'')+'</div>';
       }).join('')+'</div></section>';
   }).join('');

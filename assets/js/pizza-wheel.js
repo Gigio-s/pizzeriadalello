@@ -34,7 +34,7 @@ function Wheel(root){
     '<div class="wh-stage" aria-hidden="true">'+
       '<div class="wh-left"><div class="wh-glow"></div><div class="wh-move"><div class="wh-spin"><img class="wh-img" alt=""></div></div></div>'+
       '<div class="wh-right" aria-live="polite">'+
-        '<span class="wh-cat"></span><h2 class="wh-name"></h2><em class="tbc wh-tbc">(nome da confermare)</em><p class="wh-frase"></p>'+
+        '<span class="wh-cat"></span><h2 class="wh-name"></h2><p class="wh-frz" hidden></p><em class="tbc wh-tbc">(nome da confermare)</em><p class="wh-frase"></p>'+
         '<ol class="wh-ing"></ol>'+
         '<div class="wh-foot"><span class="wh-price"></span><a class="btn btn-red" href="https://www.octotable.com/book/restaurant/420578/welcome" target="_blank" rel="noopener">Prenota</a><button class="btn wh-tomenu" type="button"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>Torna al menu</button></div>'+
       '</div>'+
@@ -190,6 +190,7 @@ Wheel.prototype.fill=function(p,i){
   r.querySelector('.wh-cat').textContent=p.cat;
   r.querySelector('.wh-name').textContent=p.nome;
   r.querySelector('.wh-tbc').style.display=p.conferma?'':'none';
+  var fz=r.querySelector('.wh-frz'); if(fz){ fz.hidden=!p.surg; fz.innerHTML=p.surg?(window.LELLO_FRZ||'')+' Prodotto surgelato':''; }
   r.querySelector('.wh-frase').textContent=p.frase||'';
   r.querySelector('.wh-price').textContent=euro(p.prezzo);
   r.querySelector('.wh-price').classList.toggle('na',typeof p.prezzo!=='number');

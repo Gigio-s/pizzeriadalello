@@ -166,6 +166,14 @@ window.LELLO_PIZZE = window.LELLO_PIZZE.concat([
    Ogni sezione: t1 (parola sottile) + t2 (parola in grassetto), col = colore fascia, ink = colore nomi.
    Voce: [nome, prezzo, ingredienti/formato, id pizza della ruota]. Prezzo: numero oppure testo.
    Voce ['§','Titoletto'] = sottotitolo dentro la sezione. */
+/* 03/11/2026: prodotti surgelati (richiesta di Lello). Simbolo fiocco di neve accanto al nome
+   nel menu del sito, nel menu stampato, nel PDF e nella scheda della ruota.
+   Per aggiungere o togliere un prodotto basta modificare questo elenco (nome esatto come nel menu). */
+window.LELLO_FRZ = '<svg class="frz" viewBox="0 0 24 24" role="img" aria-label="Prodotto surgelato"><title>Prodotto surgelato</title><path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7M9 4l3 2 3-2M9 20l3-2 3 2M4.4 10.2l2.6-1.6-.1-3M19.6 13.8L17 15.4l.1 3M4.4 13.8L7 15.4l-.1 3M19.6 10.2L17 8.6l.1-3"/></svg>';
+window.LELLO_SURGELATI = ['Cuoppo Napoletano','Crocchè di patate','Frittatine di pasta (4 pz)','Olive ascolane (10 pz)','Mozzarelline (10 pz)',
+  'Alghette di mare (10 pz)','Frittura mista di pesce','Frittura del Golfo','Capesante gratin (4 pz)'];
+window.lelloSurg = function(nome){ return window.LELLO_SURGELATI.indexOf(nome)>-1 ? ' '+window.LELLO_FRZ : ''; };
+
 window.LELLO_MENU = [
   { id:'classiche', titolo:'Classiche napoletane', t1:'Classiche', t2:'Napoletane', col:'#B48E76', ink:'#8A6750',
     pill:'<b>Su tutte le pizze</b> la bufala la mettiamo a fine cottura. <b>Tutte le pizze Napoli</b> si possono richiedere con il <b>cornicione ripieno</b> (+2,50 €) di: ricotta fresca, provola affumicata, fior di latte 100% latte italiano, friarielli saltati, scarola saltata, cicoli.', voci:[
@@ -230,7 +238,7 @@ window.LELLO_MENU = [
     ['Frutti di Mare',12,'Pomodoro, mozzarella, frutti di mare, cozze'],['Amalfi',15,'Pomodoro, mozzarella, seppie, polipi, gamberetti, gamberone, scampo, capesante']
   ]},
   { id:'antipasti', titolo:'Antipasti e fritti', t1:'Antipasti', t2:'e Fritti', col:'#4F7FA0', ink:'#36688A',
-    nota:'* Alcuni prodotti possono essere surgelati: chiedi al personale.', voci:[
+    nota:'<span class="frz-leg">'+window.LELLO_FRZ+' Prodotto surgelato</span>', voci:[
     ['Le Montanare',7,'Pizzette fritte napoletane con pomodoro "Oro del Vesuvio", Grana Padano, basilico','montanare'],
     ['Cuoppo Napoletano',8,'Il cartoccio di fritti della tradizione','cuoppo'],
     ['Crocchè di patate',7,'','crocchepiatto'],['Frittatine di pasta (4 pz)',7,''],['Piatto Cazzilli alla Giovanni',7,'','cazzilli'],
@@ -294,6 +302,7 @@ window.LELLO_EXTRA = ['Aggiunte da 1 a 3 €','Impasto Napoli +1 €','Cornicion
 
 /* miniature locali per il menu e il PDF (assets/img/menu/<id>.webp) */
 window.LELLO_PIZZE.forEach(function(p){
+  p.surg=window.LELLO_SURGELATI.indexOf(p.nome)>-1;
   p.thumb='assets/img/menu/'+p.id+'.webp';
   /* versione leggera (420 px) per le pizze piccole della ruota; la grande (800 px) si carica solo quando apri la pizza */
   if(/^assets\/img\/pizze\/[^/]+\.webp$/.test(p.img)) p.sm=p.img.replace('assets/img/pizze/','assets/img/pizze/s/');

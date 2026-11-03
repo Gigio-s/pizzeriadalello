@@ -746,14 +746,6 @@ h1 em{font:400 1.18em/1 'Yellowtail',cursive;letter-spacing:0;padding-right:.08e
 .ig-it:hover .ig-cap{opacity:1}
 .ig-play{position:absolute;top:10px;right:10px;z-index:1;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.55)}
 .ig-play::before{content:"";position:absolute;left:11px;top:8px;border-left:9px solid #fff;border-top:6px solid transparent;border-bottom:6px solid transparent}
-/* reel in locale: video in loop, formato 4:5 */
-.ig-it.ig-vid{aspect-ratio:4/5;background:#231F20}
-.ig-vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
-.ig-vid:hover video{transform:scale(1.04)}
-.ig-vid::after{opacity:1;background:linear-gradient(180deg,rgba(0,0,0,.35),transparent 28%,transparent 60%,rgba(0,0,0,.6))}
-.ig-vid .ig-cap{opacity:1;font-weight:600}
-.ig-views{position:absolute;top:10px;left:12px;z-index:1;color:#fff;font-size:12px;font-weight:600;letter-spacing:.02em;text-shadow:0 1px 4px rgba(0,0,0,.5)}
-.ig-vid.is-playing .ig-play{opacity:0;transition:opacity .3s}
 .ig-consent{margin:18px auto 0;font-size:13px;color:#5b5556}
 .ig-load{background:none;border:0;padding:0;font:inherit;color:#BF1E2E;text-decoration:underline;cursor:pointer}
 .ig-btn{margin-top:28px;gap:10px}
@@ -762,3 +754,30 @@ h1 em{font:400 1.18em/1 'Yellowtail',cursive;letter-spacing:0;padding-right:.08e
   .ig-grid{grid-template-columns:repeat(2,1fr);gap:6px;margin-top:26px}
   .ig-cap{display:none}
 }
+
+/* ===== 03/11/2026 Instagram: striscia di reel a tutta larghezza, stile "banner" coerente col sito ===== */
+#instagram{overflow-x:clip}
+#instagram .ig-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;width:100vw;max-width:none;margin:40px 0 0 calc(50% - 50vw);padding:0 10px;box-sizing:border-box}
+#instagram .ig-vid{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;background:var(--nero);border-radius:0;text-decoration:none}
+#instagram .ig-vid::after{content:none}
+#instagram .ig-vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+#instagram .ig-vid:hover video{transform:scale(1.05)}
+#instagram .ig-band{position:absolute;left:0;right:0;bottom:0;min-height:54px;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 14px;background:var(--rosso);color:#fff;font:600 11.5px/1.25 var(--ff-b);letter-spacing:.14em;text-transform:uppercase;text-align:left;transition:background .2s}
+#instagram .ig-vid:hover .ig-band{background:var(--rosso-2)}
+#instagram .ig-ico{flex:0 0 auto;display:inline-flex;width:16px;height:16px;opacity:.9}
+#instagram .ig-ico svg{width:16px;height:16px}
+#instagram .ig-btn{margin-top:34px}
+@media (max-width:1100px){ #instagram .ig-band{font-size:10.5px;letter-spacing:.1em;padding:11px 12px} }
+@media (max-width:980px){
+  #instagram .ig-grid{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 16px 6px;margin-top:28px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  #instagram .ig-grid::-webkit-scrollbar{display:none}
+  #instagram .ig-vid{flex:0 0 46vw;max-width:260px;scroll-snap-align:start}
+}
+@media (max-width:560px){ #instagram .ig-vid{flex-basis:62vw} }
+/* simbolo prodotti surgelati nel menu */
+.frz{display:inline-block;width:.95em;height:.95em;vertical-align:-.12em;margin-left:.2em;fill:none;stroke:#36688A;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.frz-leg{display:inline-flex;align-items:center;gap:.35em;font-style:normal;font-weight:600;color:#36688A}
+.frz-leg .frz{margin-left:0}
+.wh-frz{display:flex;align-items:center;gap:.4em;margin:6px 0 0;font-size:13px;font-weight:600;color:#36688A}
+.wh-frz[hidden]{display:none}
+.wh-frz .frz{margin-left:0;width:1.05em;height:1.05em}
