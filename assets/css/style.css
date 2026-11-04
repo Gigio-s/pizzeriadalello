@@ -781,3 +781,102 @@ h1 em{font:400 1.18em/1 'Yellowtail',cursive;letter-spacing:0;padding-right:.08e
 .wh-frz{display:flex;align-items:center;gap:.4em;margin:6px 0 0;font-size:13px;font-weight:600;color:#36688A}
 .wh-frz[hidden]{display:none}
 .wh-frz .frz{margin-left:0;width:1.05em;height:1.05em}
+
+/* ===== 04/11/2026 Logo di Lello: logo visibile + filigrana tono su tono ===== */
+.intro-logo{display:block;width:150px;height:auto;margin:0 auto 22px}
+.cta-logo{display:block;width:110px;height:auto;margin:0 auto 22px}
+.ftr .ftr-logo{display:block;width:120px;height:auto}
+/* filigrana: il colore lo decide la sezione (--wm), il disegno arriva dalla maschera del logo */
+:root{--wm:#E6DDCE}
+#prenota{--wm:#AC1A29}
+.legal{--wm:#EAE2D5}
+.wm{position:relative;isolation:isolate;overflow:hidden}
+.wm::before{content:"";position:absolute;z-index:-1;top:50%;width:clamp(280px,36vw,480px);aspect-ratio:508/587;pointer-events:none;background:var(--wm);-webkit-mask:url(../img/logo-filigrana.png) center/contain no-repeat;mask:url(../img/logo-filigrana.png) center/contain no-repeat;transform:translateY(-50%) rotate(-8deg)}
+.wm-r::before{right:-5%}
+.wm-l::before{left:-5%;transform:translateY(-50%) rotate(8deg)}
+.legal.wm::before{top:140px;transform:rotate(-8deg)}
+@media (max-width:980px){
+  .wm::before{width:min(78vw,380px);opacity:.85}
+  .wm-r::before{right:-22%}.wm-l::before{left:-22%}
+  .intro-logo{width:120px;margin-bottom:18px}
+  .cta-logo{width:96px}
+}
+
+/* ===== 04/11/2026 Logo nella hero della home: filigrana a sinistra + logo visibile ===== */
+.hero{isolation:isolate}
+.hero-wm{position:absolute;z-index:-1;left:-3%;top:50%;width:clamp(320px,34vw,540px);aspect-ratio:508/587;pointer-events:none;background:#E7DDCD;-webkit-mask:url(../img/logo-filigrana.png) center/contain no-repeat;mask:url(../img/logo-filigrana.png) center/contain no-repeat;transform:translateY(-50%) rotate(8deg);transition:opacity .5s}
+.hero:has(.wheel.is-open) .hero-wm{opacity:.45}
+.hero-logo{display:block;height:auto}
+@media (min-width:981px){
+  .hero-logo{position:absolute;width:132px;right:max(32px,calc(50vw - 610px));top:-8px;transform:rotate(-5deg)}
+}
+@media (max-width:980px){
+  .hero-logo{width:60px;margin:0 auto 8px}
+  .hero-wm{width:min(86vw,420px);left:-30%;top:46%;opacity:.8}
+}
+
+/* ===== 04/11/2026 FONT DEL SITO: Bebas Neue per titoli, menu e pulsanti + Noto Sans per i testi
+   (ispirati a catellopizzeria.it, approvati da Luca). Font in locale (assets/fonts), licenza SIL OFL.
+   Il menu in stile stampato (menu.html, versione "ufficiale") mantiene i suoi font FSEC/FSC come il PDF. ===== */
+@font-face{font-family:'Bebas Neue';src:url(../fonts/bebas-neue-latin-400-normal.woff2) format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Noto Sans';src:url(../fonts/noto-sans-latin-400-normal.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Noto Sans';src:url(../fonts/noto-sans-latin-500-normal.woff2) format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Noto Sans';src:url(../fonts/noto-sans-latin-600-normal.woff2) format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Noto Sans';src:url(../fonts/noto-sans-latin-700-normal.woff2) format('woff2');font-weight:700 900;font-display:swap}
+body{--ff-t:'Bebas Neue','Arial Narrow',sans-serif;--ff-s:'Bebas Neue','Arial Narrow',sans-serif;--ff-b:'Noto Sans',system-ui,sans-serif}
+body h1,body h2,body h3,body .h2{letter-spacing:.04em;font-weight:400}
+body .h2 em{font-size:1em;font-weight:400;letter-spacing:.04em}
+body .btn,body .nav a,body .eyebrow,body .ftr h5,body .ig-band,body .pz b,body .wh-cat,body .wh-price{font-family:var(--ff-t);font-weight:400}
+body .btn{font-size:17px;letter-spacing:.12em}
+body .nav a{font-size:18px;letter-spacing:.1em}
+body .eyebrow{font-size:16px;letter-spacing:.24em}
+body .ftr h5{font-size:16px}
+body #instagram .ig-band{font-size:15px;letter-spacing:.1em}
+body .pz b{font-size:1.25em;letter-spacing:.05em}
+/* Bebas e' condensato: le scritte piccole in Bebas vanno un po' piu' grandi per restare leggibili */
+.mitem b{font-size:22px;font-weight:400;letter-spacing:.04em;line-height:1.15}
+.mitem .pr{font-size:21px;font-weight:400;letter-spacing:.04em}
+.wh-ing b{font-size:19px;font-weight:400;letter-spacing:.04em}
+.wh-price{font-weight:400;letter-spacing:.03em}
+.wh-sugg b{font-size:19px;font-weight:400;letter-spacing:.04em}
+.wh-sugg em{font-size:18px;font-weight:400;letter-spacing:.04em}
+.faq-it summary{font-size:21px;font-weight:400;letter-spacing:.04em}
+.legal h2{font-size:28px;font-weight:400;letter-spacing:.04em}
+.legal h3{font-size:20px;font-weight:400;letter-spacing:.04em}
+.award .medal{font-weight:400;font-size:15px;letter-spacing:.03em}
+.award h3{font-size:24px;letter-spacing:.04em}
+@media (max-width:980px){ .wh-ing b{font-size:16px} .mitem b{font-size:20px} }
+
+/* menu stile stampato: logo nuovo in copertina */
+.mu-top .mu-firma{width:150px;height:auto;filter:none}
+@media (max-width:560px){.mu-top .mu-firma{width:124px}}
+
+/* ===== 04/11/2026 Spazi tra le sezioni ridotti (prima fino a 130px sopra + 130px sotto) ===== */
+.sec{padding:clamp(48px,6vw,80px) 0}
+#storia{padding-bottom:clamp(32px,4vw,52px)}
+#instagram{padding-top:clamp(28px,3.5vw,48px)}
+.h2,h1,h2{text-wrap:balance}
+@media (max-width:980px){ .sec{padding:44px 0} #storia{padding-bottom:28px} #instagram{padding-top:24px} }
+/* mobile: il Bebas e' stretto, il titolo della hero puo' essere un po' piu' grande senza andare a capo */
+@media (max-width:980px){ .hero-head h1{font-size:clamp(34px,10.5vw,46px)} }
+@media (max-width:374px){ .hero-head h1{font-size:32px} }
+
+/* ===== 04/11/2026 Footer su telefono: brand centrato, Contatti e Orari affiancati, Esplora compatto ===== */
+@media (max-width:640px){
+  .ftr{padding-top:40px}
+  .ftr-grid{grid-template-columns:1fr 1fr;gap:26px 16px}
+  .ftr-grid > div:first-child{grid-column:1/-1;display:flex;flex-direction:column;align-items:center;text-align:center;padding-bottom:24px;border-bottom:1px solid rgba(235,229,213,.1)}
+  .ftr-grid > div:first-child p{margin-top:14px!important;max-width:320px!important}
+  .ftr .ftr-logo{width:104px;margin:0 auto}
+  .ftr .social{justify-content:center;margin-top:16px}
+  .ftr h5{margin:2px 0 10px;font-size:15px}
+  .ftr ul{gap:0}
+  .ftr li{gap:8px;font-size:13px;line-height:1.45}
+  .ftr li svg{width:14px;height:14px;margin-top:9px}
+  .ftr li a,.ftr ul a{padding:6px 0}
+  .ftr-orari li span{padding:5px 0;display:block}
+  .ftr-grid > div:last-child{grid-column:1/-1;text-align:center;padding-top:22px;border-top:1px solid rgba(235,229,213,.1)}
+  .ftr-grid > div:last-child ul{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 18px}
+  .ftr-bot{align-items:center;text-align:center;margin-top:26px}
+}
+@media (max-width:359px){ .ftr-grid{grid-template-columns:1fr} }

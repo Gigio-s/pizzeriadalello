@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Caricamento con il logo (04/11/2026): a ogni apertura di pagina, minimo 1,5 s (intanto si caricano le foto), massimo 3 s -->
+<script>document.documentElement.classList.add('sp-on')</script>
+<style>.sp{display:none}html.sp-on .sp{display:flex;position:fixed;inset:0;z-index:9999;flex-direction:column;align-items:center;justify-content:center;gap:26px;background:#F3EEE6;animation:spAuto .45s ease 3.3s forwards}html.sp-on .sp img{width:min(210px,50vw);height:auto;animation:spIn .7s cubic-bezier(.2,.8,.2,1) both}html.sp-on .sp i{position:relative;display:block;width:120px;height:3px;overflow:hidden;background:rgba(191,30,46,.15)}html.sp-on .sp i:after{content:"";position:absolute;inset:0;background:#BF1E2E;transform-origin:left;animation:spBar 1.5s ease-out both}html.sp-on .sp.out{opacity:0;visibility:hidden;transition:opacity .45s ease,visibility 0s .45s}@keyframes spIn{from{opacity:0;transform:scale(.92) translateY(8px)}to{opacity:1;transform:none}}@keyframes spBar{from{transform:scaleX(0)}to{transform:scaleX(1)}}@keyframes spAuto{to{opacity:0;visibility:hidden}}@media (prefers-reduced-motion:reduce){html.sp-on .sp img,html.sp-on .sp i:after{animation:none}}</style>
+<link rel="preload" href="assets/img/logo-lello-sm.webp" as="image" type="image/webp">
 <title>Pizzeria da Lello Le Fornaci | Pizza napoletana a Costabissara, Vicenza</title>
 <meta name="description" content="Pizzeria napoletana a Costabissara (Vicenza) dal 1997: Migliore pizzeria di Vicenza 2024. Pizze napoletane, eccellenze con prodotti D.O.P. campani, pizze sottili, calzoni e fritti. Aperti da mercoledì a domenica, 18:30-23:30. Prenota online.">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -22,16 +26,21 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
 <link rel="stylesheet" href="assets/fonts/google-fonts.css">
+<link rel="preload" href="assets/fonts/bebas-neue-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/noto-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/style.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Restaurant", "@id": "https://www.pizzeriadalello.it/#pizzeria", "name": "Pizzeria da Lello Le Fornaci", "alternateName": ["Le Fornaci da Lello", "Pizzeria da Lello Costabissara"], "description": "Pizzeria napoletana a Costabissara (Vicenza) dal 1997. Migliore pizzeria di Vicenza 2024 per la guida Mangiare e bere bene a Vicenza del Giornale di Vicenza.", "url": "https://www.pizzeriadalello.it/", "telephone": "+39 0444 557751", "priceRange": "€€", "currenciesAccepted": "EUR", "image": ["https://www.pizzeriadalello.it/assets/img/sito/gallery-45.jpg", "https://www.pizzeriadalello.it/assets/img/sito/gallery-32.jpg"], "logo": "https://www.pizzeriadalello.it/assets/img/logo-lefornaci-dalello.png", "servesCuisine": ["Pizza napoletana", "Pizza", "Cucina napoletana", "Calzoni", "Fritti napoletani"], "address": {"@type": "PostalAddress", "streetAddress": "Via Fornace, 19", "addressLocality": "Costabissara", "postalCode": "36030", "addressRegion": "VI", "addressCountry": "IT"}, "hasMap": "https://goo.gl/maps/xHmBJgUzRxz33J5g7", "areaServed": ["Costabissara", "Vicenza", "Caldogno", "Monteviale", "Isola Vicentina", "Creazzo", "Gambugliano"], "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "18:30", "closes": "23:30"}], "hasMenu": "https://www.pizzeriadalello.it/menu.html", "acceptsReservations": "https://www.octotable.com/book/restaurant/420578/welcome", "foundingDate": "1997", "founder": {"@type": "Person", "name": "Giovanni Ugliano"}, "award": ["Migliore pizzeria di Vicenza 2024 - Mangiare e bere bene a Vicenza, Il Giornale di Vicenza", "5° posto in Veneto 2024"], "sameAs": ["https://www.instagram.com/lefornacidalello/", "https://www.facebook.com/lefornacidalello"]}, {"@type": "WebSite", "@id": "https://www.pizzeriadalello.it/#sito", "url": "https://www.pizzeriadalello.it/", "name": "Pizzeria da Lello Le Fornaci", "inLanguage": "it-IT", "publisher": {"@id": "https://www.pizzeriadalello.it/#pizzeria"}}, {"@type": "FAQPage", "@id": "https://www.pizzeriadalello.it/#faq", "mainEntity": [{"@type": "Question", "name": "Quali sono gli orari della Pizzeria da Lello?", "acceptedAnswer": {"@type": "Answer", "text": "Siamo aperti da mercoledì a domenica, dalle 18:30 alle 23:30. Lunedì e martedì siamo chiusi."}}, {"@type": "Question", "name": "Come posso prenotare un tavolo?", "acceptedAnswer": {"@type": "Answer", "text": "Puoi prenotare online in pochi secondi dal pulsante Prenota oppure chiamarci allo 0444 557751. Per gruppi numerosi e feste ti consigliamo di telefonare."}}, {"@type": "Question", "name": "Che tipo di pizza fate?", "acceptedAnswer": {"@type": "Answer", "text": "La vera pizza napoletana: le classiche, le eccellenze firmate da Lello con prodotti D.O.P. campani, i calzoni al forno o fritti. Abbiamo anche trenta pizze sottili tradizionali e i fritti napoletani: montanare, cuoppo, crocchè e frittatine."}}, {"@type": "Question", "name": "Avete la base senza glutine?", "acceptedAnswer": {"@type": "Answer", "text": "Sì, la base senza glutine è disponibile su richiesta con un supplemento di 3,50 €. Per allergie e intolleranze chiedi al personale la tabella dei 14 allergeni."}}, {"@type": "Question", "name": "Posso avere il cornicione ripieno?", "acceptedAnswer": {"@type": "Answer", "text": "Sì, tutte le pizze Napoli si possono chiedere con il cornicione ripieno (+2,50 €) di ricotta fresca, provola affumicata, fior di latte, friarielli saltati, scarola saltata o cicoli."}}, {"@type": "Question", "name": "Dove si trova la pizzeria?", "acceptedAnswer": {"@type": "Answer", "text": "In Via Fornace 19 a Costabissara (VI), a pochi minuti da Vicenza, Caldogno, Monteviale, Isola Vicentina e Creazzo."}}]}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Restaurant", "@id": "https://www.pizzeriadalello.it/#pizzeria", "name": "Pizzeria da Lello Le Fornaci", "alternateName": ["Le Fornaci da Lello", "Pizzeria da Lello Costabissara"], "description": "Pizzeria napoletana a Costabissara (Vicenza) dal 1997. Migliore pizzeria di Vicenza 2024 per la guida Mangiare e bere bene a Vicenza del Giornale di Vicenza.", "url": "https://www.pizzeriadalello.it/", "telephone": "+39 0444 557751", "priceRange": "€€", "currenciesAccepted": "EUR", "image": ["https://www.pizzeriadalello.it/assets/img/sito/gallery-45.jpg", "https://www.pizzeriadalello.it/assets/img/sito/gallery-32.jpg"], "logo": "https://www.pizzeriadalello.it/assets/img/logo-lello.png", "servesCuisine": ["Pizza napoletana", "Pizza", "Cucina napoletana", "Calzoni", "Fritti napoletani"], "address": {"@type": "PostalAddress", "streetAddress": "Via Fornace, 19", "addressLocality": "Costabissara", "postalCode": "36030", "addressRegion": "VI", "addressCountry": "IT"}, "hasMap": "https://goo.gl/maps/xHmBJgUzRxz33J5g7", "areaServed": ["Costabissara", "Vicenza", "Caldogno", "Monteviale", "Isola Vicentina", "Creazzo", "Gambugliano"], "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "18:30", "closes": "23:30"}], "hasMenu": "https://www.pizzeriadalello.it/menu.html", "acceptsReservations": "https://www.octotable.com/book/restaurant/420578/welcome", "foundingDate": "1997", "founder": {"@type": "Person", "name": "Giovanni Ugliano"}, "award": ["Migliore pizzeria di Vicenza 2024 - Mangiare e bere bene a Vicenza, Il Giornale di Vicenza", "5° posto in Veneto 2024"], "sameAs": ["https://www.instagram.com/lefornacidalello/", "https://www.facebook.com/lefornacidalello"]}, {"@type": "WebSite", "@id": "https://www.pizzeriadalello.it/#sito", "url": "https://www.pizzeriadalello.it/", "name": "Pizzeria da Lello Le Fornaci", "inLanguage": "it-IT", "publisher": {"@id": "https://www.pizzeriadalello.it/#pizzeria"}}, {"@type": "FAQPage", "@id": "https://www.pizzeriadalello.it/#faq", "mainEntity": [{"@type": "Question", "name": "Quali sono gli orari della Pizzeria da Lello?", "acceptedAnswer": {"@type": "Answer", "text": "Siamo aperti da mercoledì a domenica, dalle 18:30 alle 23:30. Lunedì e martedì siamo chiusi."}}, {"@type": "Question", "name": "Come posso prenotare un tavolo?", "acceptedAnswer": {"@type": "Answer", "text": "Puoi prenotare online in pochi secondi dal pulsante Prenota oppure chiamarci allo 0444 557751. Per gruppi numerosi e feste ti consigliamo di telefonare."}}, {"@type": "Question", "name": "Che tipo di pizza fate?", "acceptedAnswer": {"@type": "Answer", "text": "La vera pizza napoletana: le classiche, le eccellenze firmate da Lello con prodotti D.O.P. campani, i calzoni al forno o fritti. Abbiamo anche trenta pizze sottili tradizionali e i fritti napoletani: montanare, cuoppo, crocchè e frittatine."}}, {"@type": "Question", "name": "Avete la base senza glutine?", "acceptedAnswer": {"@type": "Answer", "text": "Sì, la base senza glutine è disponibile su richiesta con un supplemento di 3,50 €. Per allergie e intolleranze chiedi al personale la tabella dei 14 allergeni."}}, {"@type": "Question", "name": "Posso avere il cornicione ripieno?", "acceptedAnswer": {"@type": "Answer", "text": "Sì, tutte le pizze Napoli si possono chiedere con il cornicione ripieno (+2,50 €) di ricotta fresca, provola affumicata, fior di latte, friarielli saltati, scarola saltata o cicoli."}}, {"@type": "Question", "name": "Dove si trova la pizzeria?", "acceptedAnswer": {"@type": "Answer", "text": "In Via Fornace 19 a Costabissara (VI), a pochi minuti da Vicenza, Caldogno, Monteviale, Isola Vicentina e Creazzo."}}]}]}</script>
 </head>
 <body data-page="home">
+<div class="sp" aria-hidden="true"><img src="assets/img/logo-lello-sm.webp" srcset="assets/img/logo-lello-sm.webp 254w, assets/img/logo-lello.webp 508w" sizes="210px" alt="" width="254" height="293"><i></i></div>
 <div id="site-header"></div>
 
 <main id="main">
   <!-- HERO: la ruota delle pizze (menu dinamico) -->
   <section class="hero" aria-label="Scegli la tua pizza">
+    <span class="hero-wm" aria-hidden="true"></span>
     <div class="hero-head">
+      <img class="hero-logo" src="assets/img/logo-lello-sm.webp" srcset="assets/img/logo-lello-sm.webp 254w, assets/img/logo-lello.webp 508w" sizes="(max-width:980px) 60px, 132px" alt="Logo della Pizzeria da Lello Le Fornaci" width="132" height="152" fetchpriority="high">
       <span class="eyebrow">Pizzeria napoletana a Costabissara</span>
       <h1>Scegli la tua <em>pizza</em></h1>
       <span class="hint"><i></i>Scorri e tocca una pizza per scoprire cosa c'è sopra</span>
@@ -44,6 +53,7 @@
   <section class="sec center intro" id="storia">
     <div class="wrap">
       <div class="rv">
+        <img class="intro-logo" src="assets/img/logo-lello-sm.webp" srcset="assets/img/logo-lello-sm.webp 254w, assets/img/logo-lello.webp 508w" sizes="150px" alt="Logo della Pizzeria da Lello Le Fornaci" width="150" height="173" loading="lazy">
         <span class="eyebrow">Dal 1997 a Costabissara</span>
         <h2 class="h2">Una storia di famiglia,<br><em>impastata a mano</em></h2>
       </div>
@@ -81,7 +91,7 @@
   </section>
 
   <!-- PRENOTA: le prenotazioni passano dal gestionale Octotable del locale (nessun modulo sul sito) -->
-  <section class="sec dark center" id="prenota">
+  <section class="sec dark center wm wm-r" id="prenota">
     <div class="wrap" style="max-width:760px">
       <div class="rv"><span class="eyebrow">Prenotazioni</span>
       <h2 class="h2">Prenota il tuo <em>tavolo</em></h2>
@@ -95,7 +105,7 @@
   </section>
 
   <!-- DOVE SIAMO (come Chill "Where are we?") -->
-  <section class="sec center" id="dove">
+  <section class="sec center wm wm-l" id="dove">
     <div class="wrap">
       <div class="rv"><span class="eyebrow">Dove siamo</span>
       <h2 class="h2">Via Fornace 19, <em>Costabissara</em></h2>
@@ -124,7 +134,7 @@
   </section>
 
   <!-- DOMANDE FREQUENTI (SEO locale: stesse risposte dei dati strutturati FAQPage) -->
-  <section class="sec center" id="faq">
+  <section class="sec center wm wm-r" id="faq">
     <div class="wrap" style="max-width:820px">
       <div class="rv"><span class="eyebrow">Domande frequenti</span>
       <h2 class="h2">Tutto quello che c'è da sapere <em>prima di venire</em></h2></div>

@@ -54,7 +54,7 @@ function header(){
 
 function footer(){
   return '<footer class="ftr"><div class="wrap"><div class="ftr-grid">'+
-    '<div><img src="'+L.info.logo+'" alt="da Lello Le Fornaci" style="height:48px;width:auto">'+
+    '<div><img class="ftr-logo" src="assets/img/logo-lello-chiaro-sm.webp" alt="Logo della Pizzeria da Lello Le Fornaci" width="120" height="138" loading="lazy">'+
       '<p style="margin-top:18px;max-width:300px;opacity:.85">La vera tradizione napoletana a Costabissara dal 1997. Migliore pizzeria di Vicenza 2024.</p>'+
       '<div class="social"><a class="ico-btn" href="'+L.info.ig+'" target="_blank" rel="noopener" aria-label="Instagram">'+I.ig+'</a><a class="ico-btn" href="'+L.info.fb+'" target="_blank" rel="noopener" aria-label="Facebook">'+I.fb+'</a></div></div>'+
     '<div><h5>Contatti</h5><ul>'+
@@ -83,9 +83,9 @@ function renderMenuUfficiale(host){
   (window.LELLO_PIZZE||[]).forEach(function(p){ P[p.id]=p; });
   var nav='<nav class="mu-nav" aria-label="Sezioni del menu"><div class="mu-nav-in">'+M.map(function(g,i){
     return '<a href="#'+g.id+'" style="--c:'+g.col+'"'+(i===0?' aria-current="true"':'')+'>'+g.titolo+'</a>'; }).join('')+'</div></nav>';
-  var top='<div class="mu-top"><img class="mu-firma" src="../assets/img/dalello-firma.png" alt="da Lello" width="250" height="93">'+
+  var top='<div class="mu-top"><img class="mu-firma" src="assets/img/logo-lello-sm.webp" srcset="assets/img/logo-lello-sm.webp 254w, assets/img/logo-lello.webp 508w" sizes="150px" alt="Logo della Pizzeria da Lello Le Fornaci" width="150" height="173">'+
     '<p class="mu-sub">Il menu <b>Le Fornaci</b></p>'+
-    '<div class="mu-act"><a class="mu-pdf" href="../assets/menu-pizzeria-da-lello.pdf" download>Scarica il menu in PDF</a></div>'+
+    '<div class="mu-act"><a class="mu-pdf" href="assets/menu-pizzeria-da-lello.pdf" download>Scarica il menu in PDF</a></div>'+
     '<label class="mu-search"><span class="sr">Cerca nel menu</span><input type="search" placeholder="Cerca: burrata, friarielli, pistacchio..." autocomplete="off"></label></div>';
   var secs=M.map(function(g){
     var rows=g.voci.map(function(v){
@@ -104,7 +104,7 @@ function renderMenuUfficiale(host){
   var extra=(window.LELLO_EXTRA||[]).map(function(x){ return '<span>'+x+'</span>'; }).join('');
   host.innerHTML='<div class="mu">'+top+nav+secs+'<p class="mu-empty">Nessun piatto trovato. Prova con un altro ingrediente.</p>'+
     '<div class="mu-extra">'+extra+'</div><p class="mu-foot">Prezzi in euro, coperto escluso. Allergeni: chiedi al personale la tabella dei 14 allergeni.</p>'+
-    '<img class="mu-logo" src="../assets/img/lello-logo-scuro.png" alt="da Lello Le Fornaci" width="194" height="50"></div>';
+    '<img class="mu-logo" src="assets/img/lello-logo-scuro.png" alt="da Lello Le Fornaci" width="194" height="50"></div>';
 
   var links=host.querySelectorAll('.mu-nav a'), navIn=host.querySelector('.mu-nav-in');
   function setCur(id){ links.forEach(function(a){ var on=a.getAttribute('href')==='#'+id; if(on){ a.setAttribute('aria-current','true'); navIn.scrollTo({left:a.offsetLeft-16,behavior:'smooth'}); } else a.removeAttribute('aria-current'); }); }
@@ -236,4 +236,22 @@ document.addEventListener('DOMContentLoaded',function(){
   document.querySelectorAll('[data-icon]').forEach(function(el){ el.innerHTML=I[el.getAttribute('data-icon')]||''; });
   renderMenu(); reveal(); protezioneDemo();
 });
+})();
+
+/* ---------- Caricamento col logo (04/11/2026) ----------
+   A ogni apertura di pagina: resta almeno 1,5 secondi (cosi' intanto si caricano font e foto delle pizze),
+   si chiude quando la pagina e' pronta e comunque entro 3 secondi. */
+(function(){
+  var sp=document.querySelector('.sp'); if(!sp) return;
+  var root=document.documentElement, fatto=false;
+  function chiudi(){
+    if(fatto) return; fatto=true;
+    var attesa=Math.max(0,1500-(window.performance&&performance.now?performance.now():1500));
+    setTimeout(function(){
+      sp.classList.add('out');
+      setTimeout(function(){ if(sp.parentNode) sp.parentNode.removeChild(sp); root.classList.remove('sp-on'); },500);
+    },attesa);
+  }
+  if(document.readyState==='complete') chiudi(); else window.addEventListener('load',chiudi);
+  setTimeout(chiudi,3000);
 })();
