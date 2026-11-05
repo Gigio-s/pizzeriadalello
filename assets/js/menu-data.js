@@ -300,10 +300,14 @@ window.LELLO_EXTRA = ['Aggiunte da 1 a 3 €','Impasto Napoli +1 €','Cornicion
   });
 })();
 
+window.LELLO_IMG_V='20261105';
 /* miniature locali per il menu e il PDF (assets/img/menu/<id>.webp) */
 window.LELLO_PIZZE.forEach(function(p){
   p.surg=window.LELLO_SURGELATI.indexOf(p.nome)>-1;
   p.thumb='assets/img/menu/'+p.id+'.webp';
   /* versione leggera (420 px) per le pizze piccole della ruota; la grande (800 px) si carica solo quando apri la pizza */
   if(/^assets\/img\/pizze\/[^/]+\.webp$/.test(p.img)) p.sm=p.img.replace('assets/img/pizze/','assets/img/pizze/s/');
+  /* numero di versione: quando si cambiano le foto delle pizze, aggiornare LELLO_IMG_V (es. data di oggi)
+     cosi' anche chi ha gia' visitato il sito vede subito le foto nuove */
+  var v='?v='+window.LELLO_IMG_V; p.img+=v; p.thumb+=v; if(p.sm) p.sm+=v;
 });

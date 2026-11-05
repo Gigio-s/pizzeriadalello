@@ -3,11 +3,12 @@
 [build]
   publish = "."
 
-# Cache: immagini, font e PDF restano nel browser 7 giorni, CSS e JS 1 giorno (si aggiornano comunque al nuovo deploy grazie a Netlify)
+# Cache (aggiornato 05/11/2026): immagini, video, PDF, CSS e JS vengono ricontrollati a ogni visita (risposta 304 veloce se non cambiati),
+# cosi' ogni modifica pubblicata si vede subito. I font non cambiano mai: restano in memoria 1 anno.
 [[headers]]
   for = "/assets/img/*"
   [headers.values]
-    Cache-Control = "public, max-age=604800"
+    Cache-Control = "public, max-age=0, must-revalidate"
 [[headers]]
   for = "/assets/fonts/*"
   [headers.values]
@@ -15,15 +16,20 @@
 [[headers]]
   for = "/assets/*.pdf"
   [headers.values]
-    Cache-Control = "public, max-age=604800"
+    Cache-Control = "public, max-age=0, must-revalidate"
 [[headers]]
   for = "/assets/js/*"
   [headers.values]
-    Cache-Control = "public, max-age=86400"
+    Cache-Control = "public, max-age=0, must-revalidate"
 [[headers]]
   for = "/assets/css/*"
   [headers.values]
-    Cache-Control = "public, max-age=86400"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/video/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 # Sicurezza di base
 [[headers]]
