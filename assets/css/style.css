@@ -880,3 +880,6 @@ body .pz b{font-size:1.25em;letter-spacing:.05em}
   .ftr-bot{align-items:center;text-align:center;margin-top:26px}
 }
 @media (max-width:359px){ .ftr-grid{grid-template-columns:1fr} }
+
+/* 05/11/2026: nella home la ricerca pizza/ingrediente non c'e' (resta solo nella pagina menu) */
+body[data-page="home"] .wh-search{display:none}
