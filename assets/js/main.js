@@ -41,7 +41,7 @@ function header(){
   var nav=links.map(function(l){ return '<a href="'+l[0]+'"'+(l[2]&&l[2]===page?' aria-current="page"':'')+'>'+l[1]+'</a>'; }).join('');
   return '<a class="skip" href="#main">Vai al contenuto</a>'+
   '<header class="hdr"><div class="wrap">'+
-    '<a class="hdr-logo" href="index.html" aria-label="Pizzeria da Lello, torna alla home"><img src="assets/img/logo-lefornaci-dalello.png" alt="Le Fornaci da Lello" width="172" height="44"></a>'+
+    '<a class="hdr-logo" href="index.html" aria-label="Pizzeria da Lello, torna alla home"><img class="hdr-mini" src="assets/img/logo-lello-a-sm.webp" alt="" width="254" height="293"><span class="hdr-lock" aria-hidden="true"></span></a>'+
     '<nav class="nav" id="nav" aria-label="Menu principale">'+nav+'</nav>'+
     '<div class="hdr-cta">'+
       '<a class="ico-btn ig" href="'+L.info.ig+'" target="_blank" rel="noopener" aria-label="Seguici su Instagram @lefornacidalello">'+I.ig+'</a>'+
@@ -54,7 +54,7 @@ function header(){
 
 function footer(){
   return '<footer class="ftr"><div class="wrap"><div class="ftr-grid">'+
-    '<div><img class="ftr-logo" src="assets/img/logo-lello-chiaro-sm.webp" alt="Logo della Pizzeria da Lello Le Fornaci" width="120" height="138" loading="lazy">'+
+    '<div><img class="ftr-logo" src="assets/img/logo-lello-chiaro-a-sm.webp" alt="Logo della Pizzeria da Lello Le Fornaci" width="120" height="138" loading="lazy">'+
       '<p style="margin-top:18px;max-width:300px;opacity:.85">La vera tradizione napoletana a Costabissara dal 1997. Migliore pizzeria di Vicenza 2024.</p>'+
       '<div class="social"><a class="ico-btn" href="'+L.info.ig+'" target="_blank" rel="noopener" aria-label="Instagram">'+I.ig+'</a><a class="ico-btn" href="'+L.info.fb+'" target="_blank" rel="noopener" aria-label="Facebook">'+I.fb+'</a></div></div>'+
     '<div><h5>Contatti</h5><ul>'+

@@ -300,7 +300,7 @@ window.LELLO_EXTRA = ['Aggiunte da 1 a 3 €','Impasto Napoli +1 €','Cornicion
   });
 })();
 
-window.LELLO_IMG_V='20261105';
+window.LELLO_IMG_V='20261108';
 /* miniature locali per il menu e il PDF (assets/img/menu/<id>.webp) */
 window.LELLO_PIZZE.forEach(function(p){
   p.surg=window.LELLO_SURGELATI.indexOf(p.nome)>-1;

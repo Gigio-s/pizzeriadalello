@@ -1,0 +1,144 @@
+/* Pizzeria da Lello - grafica "Napoli illustrata" (scelta dal cliente, 08/11/2026)
+   Si carica dopo style.css e vale per le pagine con <html data-tema="a">.
+   Struttura, testi e animazioni restano quelli di style.css: qui cambiano solo colori (crema, rosso pomodoro,
+   verde basilico), logo originale ricolorato (assets/img/logo-lello-a...), illustrazioni a linea (assets/bg)
+   e immagini di sfondo (assets/img/sfondi). Mai fondi neri. */
+
+/* ==================== COLORI ==================== */
+html[data-tema="a"]{
+  --nero:#F5EBDD; --nero-2:#FBF4EA; --nero-3:#EADCC8;
+  --crema:#3C3633; --crema-2:#2A211D; --grigio:#5E5650;
+  --rosso:#B3261E; --rosso-2:#B3261E; --rosso-h:#931E17;
+  --basilico:#2F6B2C; --oro:#D9A33A; --scuro:#6B1C16;
+  --line:rgba(42,33,29,.16);
+  --acc:#2F6B2C;            /* eyebrow */
+  --fondo-alt:#FBF4EA;      /* sezioni alterne */
+  --deco1:#B3261E; --deco2:#2F6B2C;
+  --hdr-bg:rgba(245,235,221,.96); --ink:#2A211D;
+  --ftr-bg:#8E1D17; --ftr-tx:#F5EBDD; --ftr-h:#FFD9A0;
+  --wm:transparent;
+}
+html[data-tema] body{background:var(--nero);color:var(--crema)}
+html[data-tema] :focus-visible{outline-color:var(--oro)}
+html[data-tema] .eyebrow,html[data-tema] .pz small{color:var(--acc)}
+html[data-tema] .h2 em,html[data-tema] h1 em{color:var(--rosso-2)}
+html[data-tema] .btn-red{background:var(--rosso);color:#fff}
+html[data-tema] .btn-red:hover{background:var(--rosso-h)}
+html[data-tema] .btn-cream{background:var(--scuro);color:#fff}
+html[data-tema] .btn-cream:hover,html[data-tema] .ck-b:hover{background:var(--rosso-h)}
+html[data-tema] .ck-b{background:var(--scuro);border-color:var(--scuro)}
+html[data-tema] .wh-price{color:var(--rosso)}
+html[data-tema] .hero-head .hint i{background:var(--rosso)}
+
+/* sfondi delle sezioni: crema, alterne leggermente piu' chiare */
+html[data-tema] #instagram,html[data-tema] #dove{background:var(--fondo-alt)}
+
+/* fascia Prenota: rosso pomodoro */
+html[data-tema] #prenota{--crema:#fff;--crema-2:#fff;--grigio:#fff;--line:rgba(255,255,255,.5);color:#fff}
+html[data-tema] #prenota{background:var(--rosso)}
+html[data-tema] #prenota .eyebrow{color:#fff}
+html[data-tema] #prenota .h2 em{color:#FFE3B0}
+html[data-tema] #prenota .btn-red{background:#fff;color:var(--rosso)}
+html[data-tema] #prenota .btn-red:hover{background:var(--ftr-bg);color:#fff}
+html[data-tema] #instagram .ig-band{background:var(--rosso)}
+
+/* le vecchie filigrane col logo lasciano il posto alle illustrazioni */
+html[data-tema] .wm::before,html[data-tema] .hero-wm{display:none}
+
+/* ==================== HEADER, MENU MOBILE, FOOTER, BARRA (chiari o colorati, mai neri) ==================== */
+html[data-tema] .hdr{--crema:var(--ink);--crema-2:var(--ink);--grigio:#5E5650;--line:rgba(42,33,29,.18);background:var(--hdr-bg);color:var(--ink);border-bottom:1px solid var(--line)}
+html[data-tema] .nav{color:var(--ink)}
+html[data-tema] .nav a{opacity:.85}
+html[data-tema] .nav a:hover,html[data-tema] .nav a[aria-current]{opacity:1;border-color:var(--rosso)}
+html[data-tema] .burger span{background:var(--ink)}
+html[data-tema] .hdr .ico-btn{color:var(--ink);border-color:var(--line)}
+html[data-tema] .hdr .ico-btn:hover,html[data-tema] .hdr .ico-btn.ig:hover{color:var(--rosso);border-color:var(--rosso)}
+@media (max-width:980px){
+  html[data-tema] .hdr{background:var(--hdr-bg)}
+  html[data-tema] .nav{background:var(--nero);border-bottom:1px solid var(--line)}
+  html[data-tema] .nav a{border-bottom-color:var(--line)}
+}
+/* logo in header: logo originale piccolo (ricolorato) + scritta "Le Fornaci da Lello" nel colore del tema */
+.hdr-lock,.hdr-mini{display:none}
+html[data-tema] .hdr-logo{gap:10px}
+html[data-tema] .hdr-lock{display:block;height:44px;aspect-ratio:390/100;background:var(--ink);-webkit-mask:url(../img/logo-lefornaci-dalello.png) left center/contain no-repeat;mask:url(../img/logo-lefornaci-dalello.png) left center/contain no-repeat}
+html[data-tema] .hdr-mini{display:block;height:58px;width:auto;flex:0 0 auto}
+@media (max-width:980px){
+  html[data-tema] .hdr-lock{height:32px}
+  html[data-tema] .hdr-mini{height:46px}
+  html[data-tema] .hdr-logo{gap:7px}
+}
+@media (max-width:374px){ html[data-tema] .hdr-lock{height:28px} html[data-tema] .hdr-mini{height:42px} }
+
+html[data-tema] .ftr{--crema:var(--ftr-tx);--crema-2:#fff;--grigio:var(--ftr-tx);--line:rgba(255,255,255,.28);background:var(--ftr-bg);color:var(--ftr-tx);border-top:0}
+html[data-tema] .ftr h5{color:var(--ftr-h)}
+html[data-tema] .ftr a{opacity:1}
+html[data-tema] .ftr a:hover{color:var(--ftr-h)}
+html[data-tema] .ftr-bot{border-top-color:rgba(255,255,255,.22)}
+html[data-tema] .ftr .ico-btn{color:var(--ftr-tx);border-color:rgba(255,255,255,.4)}
+@media (max-width:980px){
+  html[data-tema] .ftr-grid > div:first-child{border-bottom-color:rgba(255,255,255,.22)}
+  html[data-tema] .ftr-grid > div:last-child{border-top-color:rgba(255,255,255,.22)}
+  html[data-tema] .mbar{--crema:var(--ink);--line:rgba(42,33,29,.16);background:var(--hdr-bg)!important;border-top:1px solid var(--line);color:var(--ink)}
+  html[data-tema] .mbar a{color:var(--ink)}
+  html[data-tema] .mbar .go{background:var(--rosso);color:#fff}
+}
+
+/* ==================== LOGO ORIGINALE (ricolorato) IN HERO + CARICAMENTO ==================== */
+/* entrata del logo nella hero quando sparisce il caricamento: sale e oscilla */
+html[data-tema="a"] .hero-logo{animation:logoA 1s cubic-bezier(.2,.8,.2,1) .15s both}
+html.sp-on[data-tema] .hero-logo{animation:none;opacity:0}
+@keyframes logoA{0%{opacity:0;transform:translateY(26px) rotate(3deg)}60%{opacity:1;transform:translateY(-4px) rotate(-8deg)}100%{opacity:1;transform:rotate(-5deg)}}
+@media (max-width:980px){
+  html[data-tema] .hero-logo{width:72px}
+  @keyframes logoA{0%{opacity:0;transform:translateY(16px)}100%{opacity:1;transform:none}}
+}
+@media (max-width:374px){ html[data-tema] .hero-logo{width:64px} }
+
+/* caricamento: logo ricolorato (src nelle pagine), barra rossa */
+html[data-tema].sp-on .sp{background:#F5EBDD}
+html[data-tema].sp-on .sp i{background:rgba(42,33,29,.12)}
+html[data-tema].sp-on .sp i::after{background:var(--rosso)}
+
+/* ==================== ILLUSTRAZIONI DI SFONDO ==================== */
+.has-deco{position:relative;isolation:isolate}
+/* contenitore */
+.deco-box{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;display:none}
+html[data-tema] .deco-box{display:block}
+.deco{position:absolute;width:clamp(120px,13vw,200px);aspect-ratio:1;background:var(--deco1);opacity:.12;
+  -webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;
+  transform:translate3d(0,var(--py,0px),0) rotate(var(--r,0deg));will-change:transform}
+.deco-c2{background:var(--deco2)}
+.deco.deco-l{left:max(-30px,calc(50% - 760px));--r:-8deg}
+.deco.deco-r{right:max(-30px,calc(50% - 760px));--r:7deg}
+.hero .deco{width:clamp(140px,16vw,240px);opacity:.1}
+html[data-tema] #prenota .deco,html[data-tema] body[data-page="menu"] main > section.sec:last-of-type .deco{background:#fff;opacity:.13}
+/* tra 981 e 1280px i margini sono stretti: illustrazioni piu' piccole e fuori dal testo */
+@media (max-width:1280px){ .deco{width:clamp(100px,10vw,140px)} .deco.deco-l{left:-40px} .deco.deco-r{right:-40px} }
+/* telefono: una sola illustrazione per sezione, piccola e nell'angolo, mai sotto il testo */
+@media (max-width:980px){
+  .deco{width:96px;opacity:.09}
+  .deco.deco-l{left:-34px}.deco.deco-r{right:-34px}
+  .deco-box .deco:nth-child(n+2){display:none}
+  .hero .deco{width:110px}
+}
+@media print{ .deco-box{display:none!important} }
+@media (prefers-reduced-motion:reduce){ .deco{transform:rotate(var(--r,0deg));will-change:auto} html[data-tema] .hero-logo{animation:none} }
+
+
+/* ==================== IMMAGINI DI SFONDO ====================
+   Acquerello del golfo di Napoli nella hero; forno a legna nella fascia Prenota, coperto dal rosso (testo bianco leggibile).
+   Immagini leggere in assets/img/sfondi (versione -m per telefono). */
+html[data-tema="a"] .hero{background:linear-gradient(180deg,rgba(245,235,221,.55) 0%,rgba(245,235,221,.25) 45%,rgba(245,235,221,.5) 100%),url(../img/sfondi/acquerello.webp) center 65%/cover no-repeat,var(--nero)}
+html[data-tema] #prenota,html[data-tema] body[data-page="menu"] main > section.sec:last-of-type{background:linear-gradient(var(--sopra),var(--sopra)),url(../img/sfondi/forno.webp) center 60%/cover no-repeat,var(--rosso)}
+html[data-tema="a"]{--sopra:rgba(179,38,30,.86)}
+html[data-tema] body[data-page="menu"] main > section.sec:last-of-type{--crema:#fff;--crema-2:#fff;--grigio:#fff;--line:rgba(255,255,255,.5);color:#fff}
+html[data-tema] body[data-page="menu"] main > section.sec:last-of-type .h2 em{color:#FFE3B0}
+html[data-tema] body[data-page="menu"] main > section.sec:last-of-type .btn-red{background:#fff;color:var(--rosso)}
+/* nella hero l'immagine fa gia' da decorazione: niente disegni sopra */
+html[data-tema] .hero > .deco-box{display:none}
+html[data-tema] .hero:before{opacity:.5}
+@media (max-width:980px){
+  html[data-tema="a"] .hero{background-image:linear-gradient(180deg,rgba(245,235,221,.6) 0%,rgba(245,235,221,.35) 45%,rgba(245,235,221,.6) 100%),url(../img/sfondi/acquerello-m.webp);background-position:center,62% 70%}
+  html[data-tema] #prenota,html[data-tema] body[data-page="menu"] main > section.sec:last-of-type{background-image:linear-gradient(var(--sopra),var(--sopra)),url(../img/sfondi/forno-m.webp)}
+}
