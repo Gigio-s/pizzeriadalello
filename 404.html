@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it" data-tema="a">
+<head>
+<meta charset="utf-8">
+<base href="/">
+<!-- Pagina 404 (12/11/2026): Netlify la mostra da sola per ogni indirizzo che non esiste.
+     <base href="/"> serve perche' la pagina puo' aprirsi a qualsiasi profondita' (es. /pizze/vecchia/): cosi' immagini, stili e link funzionano sempre. -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preload" href="assets/img/logo-lello-a-sm.webp" as="image" type="image/webp">
+<title>Pagina non trovata | Pizzeria da Lello Le Fornaci, Costabissara</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F5EBDD">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/img/icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<link rel="stylesheet" href="assets/fonts/google-fonts.css">
+<link rel="preload" href="assets/fonts/bebas-neue-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/noto-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css?v=20261105">
+<link rel="stylesheet" href="assets/css/tema.css?v=20261108">
+<style>
+.e404{min-height:100svh;display:flex;align-items:center;text-align:center;padding:calc(var(--hdr,78px) + 40px) 0 70px}
+.e404 .wrap{max-width:640px}
+.e404-logo{width:132px;height:auto;margin:0 auto 6px;transform:rotate(-5deg)}
+.e404-num{display:block;font:400 clamp(96px,22vw,168px)/.85 var(--ff-t,'Bebas Neue');letter-spacing:.02em;color:var(--rosso,#B3261E)}
+.e404 h1{margin:10px 0 0}
+.e404 .lead{margin:16px auto 0;max-width:520px}
+.e404-btn{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:28px}
+@media (max-width:980px){.e404{padding-top:calc(var(--hdr,64px) + 28px)}.e404-logo{width:96px}}
+</style>
+</head>
+<body data-page="404">
+<div id="site-header"></div>
+<main id="main" class="sec e404 has-deco">
+  <div class="deco-box" aria-hidden="true">
+    <span class="deco deco-l deco-c1" style="-webkit-mask-image:url(assets/bg/vesuvio.svg);mask-image:url(assets/bg/vesuvio.svg);top:58%"></span>
+    <span class="deco deco-r deco-c2" style="-webkit-mask-image:url(assets/bg/basilico.svg);mask-image:url(assets/bg/basilico.svg);top:18%"></span>
+    <span class="deco deco-r deco-c1 deco-x" style="-webkit-mask-image:url(assets/bg/pala.svg);mask-image:url(assets/bg/pala.svg);top:70%"></span>
+  </div>
+  <div class="wrap">
+    <img class="e404-logo" src="assets/img/logo-lello-a-sm.webp" alt="" width="254" height="293">
+    <span class="e404-num" aria-hidden="true">404</span>
+    <span class="eyebrow">Pagina non trovata</span>
+    <h1 class="h2">Questa pizza non è nel <em>menu</em></h1>
+    <p class="lead">La pagina che cerchi non esiste più o l'indirizzo è sbagliato. Nessun problema: il forno è sempre acceso.</p>
+    <div class="e404-btn">
+      <a class="btn btn-red" href="index.html">Torna alla home</a>
+      <a class="btn btn-ghost" href="menu.html">Guarda il menu</a>
+      <a class="btn btn-ghost" href="https://www.octotable.com/book/restaurant/420578/welcome" target="_blank" rel="noopener" data-octotable>Prenota un tavolo</a>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="assets/js/main.js?v=20261108"></script>
+<script src="assets/js/consenso.js?v=20261105"></script>
+</body>
+</html>
