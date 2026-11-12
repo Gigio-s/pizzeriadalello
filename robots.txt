@@ -1,4 +1,5 @@
 User-agent: *
+Disallow: /tavolo/
 Allow: /
 
 Sitemap: https://www.pizzeriadalello.it/sitemap.xml
